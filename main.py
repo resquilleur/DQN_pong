@@ -46,7 +46,7 @@ def calc_loss(batch, net, tgt_net, device=torch.device('cpu')):
     done_mask = torch.ByteTensor(dones).to(device)
 
     # получаем состояния по индексу действия
-    state_action_values = net(states_v).gather(1, actions_v.unsqueez(-1)).squeeze(-1)
+    state_action_values = net(states_v).gather(1, actions_v.unsqueeze(-1)).squeeze(-1)
     # получаем будущие состояние по максимальному значению Q функции
     next_state_values = tgt_net(next_states_v).max(1)[0]
     # финальное состояние отсутствует поэтому зануляем его
