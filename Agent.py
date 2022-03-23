@@ -47,7 +47,7 @@ class Agent:
             action = int(act_v.item())
 
         new_state, reward, is_done, _ = self.env.step(action)
-        self.total_rewad += reward
+        self.total_reward += reward
 
         exp = Experience(self.state, action, reward, is_done, new_state)
         self.exp_buffer.append(exp)
